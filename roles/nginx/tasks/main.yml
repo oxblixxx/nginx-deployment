@@ -1,0 +1,11 @@
+- name: install nginx
+  apt: 
+    name: "{{ nginx_package_name }}"
+    state: latest
+    enabled: yes
+
+- name: start nginx if not started
+  service:
+    name: "{{ nginx_package_name }}"
+  state: started
+     
