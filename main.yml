@@ -2,8 +2,6 @@
 
 - hosts: all
   become: true
-  pre_tasks: 
-
 
   - name: install updates for distro(Ubuntu)
     apt:
@@ -21,3 +19,8 @@
       state: started
       enabled: yes
 
+  - name: copy files to server
+    copy:
+      src: hostname.conf
+      dest: /etc/nginx/conf.d/hostname.conf
+      mode: 0644
