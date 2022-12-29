@@ -1,4 +1,4 @@
---
+---
 
 - hosts: all
   become: true
@@ -7,6 +7,17 @@
 
   - name: install updates for distro(Ubuntu)
     apt:
-      upgrade: dist
       update_cache: yes
+
+  - name: install nginx
+    apt:
+      name: 
+        - nginx
+      state: latest
+
+  - name: start and enable nginx
+    service:
+      name: nginx
+      state: started
+      enabled: yes
 
